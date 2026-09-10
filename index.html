@@ -7,6 +7,7 @@
     <title>FIREGAME SMP</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -85,6 +86,50 @@
         .version {
             font-size: 23px;
             color: #ff7043;
+        }
+
+        /* ===== EVENT BUTTON ===== */
+
+        .event-button-container {
+            margin: -30px auto 80px;
+            text-align: center;
+        }
+
+        .event-button {
+            display: inline-block;
+
+            padding: 16px 40px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff2600,
+                    #ff6500,
+                    #ff2600
+                );
+
+            color: white;
+            text-decoration: none;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            border: 2px solid #ffb300;
+            border-radius: 15px;
+
+            box-shadow:
+                0 0 15px #ff4500,
+                0 0 30px rgba(255, 69, 0, 0.5);
+
+            transition: 0.3s;
+        }
+
+        .event-button:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 25px #ff6500,
+                0 0 45px rgba(255, 69, 0, 0.7);
         }
 
         /* ===== TOP KILL ===== */
@@ -251,14 +296,6 @@
             color: #ff4500;
         }
 
-        /* ===== LOADING ===== */
-
-        .loading {
-            color: #ffb300;
-            font-size: 18px;
-            padding: 25px;
-        }
-
         /* ===== MOBILE ===== */
 
         @media (max-width: 600px) {
@@ -277,6 +314,15 @@
 
             .version {
                 font-size: 18px;
+            }
+
+            .event-button-container {
+                margin: -20px auto 60px;
+            }
+
+            .event-button {
+                padding: 13px 30px;
+                font-size: 19px;
             }
 
             .top-kill {
@@ -315,6 +361,7 @@
                 font-size: 24px;
             }
         }
+
     </style>
 </head>
 
@@ -347,6 +394,20 @@
             </div>
 
         </div>
+
+    </div>
+
+
+    <!-- ===== EVENT BUTTON ===== -->
+
+    <div class="event-button-container">
+
+        <a
+            href="event.html"
+            class="event-button"
+        >
+            🎉 ایونت‌ها
+        </a>
 
     </div>
 
@@ -535,18 +596,16 @@
 
 
                 /* ==============================
-                   اگر API اطلاعات Kill داشته باشد
+                   API KILLS
                 ============================== */
 
                 if (
                     data.kills &&
-                    Array.isArray(data.kills) &&
-                    data.kills.length > 0
+                    Array.isArray(data.kills)
                 ) {
 
                     const players =
                         data.kills.slice(0, 3);
-
 
                     players.forEach(
                         (player, index) => {
@@ -554,18 +613,15 @@
                             const number =
                                 index + 1;
 
-
                             const nameElement =
                                 document.getElementById(
                                     "player" + number
                                 );
 
-
                             const killsElement =
                                 document.getElementById(
                                     "kills" + number
                                 );
-
 
                             if (
                                 nameElement &&
