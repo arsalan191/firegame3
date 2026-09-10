@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,8 @@
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
@@ -17,9 +20,8 @@
         }
 
         body {
-            margin: 0;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Tahoma, sans-serif;
             text-align: center;
             color: white;
 
@@ -33,10 +35,10 @@
                 );
         }
 
-        /* ===== HEADER ===== */
+        /* ================= HEADER ================= */
 
         .container {
-            padding: 70px 20px 100px;
+            padding: 70px 20px 60px;
         }
 
         .logo {
@@ -55,11 +57,12 @@
             transform: scale(1.03);
         }
 
-        /* ===== SERVER INFO ===== */
+        /* ================= SERVER INFO ================= */
 
         .server-info {
             margin: 45px auto 0;
             padding: 30px;
+
             max-width: 850px;
 
             background: rgba(0, 0, 0, 0.65);
@@ -75,7 +78,9 @@
         .ip {
             font-size: 28px;
             font-weight: bold;
+
             color: #ffb300;
+
             margin-bottom: 20px;
         }
 
@@ -88,10 +93,10 @@
             color: #ff7043;
         }
 
-        /* ===== EVENT BUTTON ===== */
+        /* ================= EVENT BUTTON ================= */
 
         .event-button-container {
-            margin: -30px auto 80px;
+            margin: 10px auto 80px;
             text-align: center;
         }
 
@@ -132,18 +137,14 @@
                 0 0 45px rgba(255, 69, 0, 0.7);
         }
 
-        /* ===== TOP KILL ===== */
+        /* ================= TOP KILL ================= */
 
         .top-kill {
             margin: 100px auto;
+
             padding: 40px 20px;
 
             max-width: 900px;
-
-            opacity: 0;
-            transform: translateY(80px);
-
-            transition: 1s ease;
 
             background: rgba(10, 5, 5, 0.85);
 
@@ -153,6 +154,11 @@
             box-shadow:
                 0 0 30px rgba(255, 69, 0, 0.5),
                 inset 0 0 30px rgba(255, 69, 0, 0.1);
+
+            opacity: 0;
+            transform: translateY(80px);
+
+            transition: 1s ease;
         }
 
         .top-kill.show {
@@ -164,6 +170,7 @@
             margin: 0;
 
             font-size: 42px;
+
             color: #ff6a00;
 
             text-shadow:
@@ -173,16 +180,20 @@
 
         .subtitle {
             color: #ccc;
+
             font-size: 18px;
+
+            margin-top: 10px;
             margin-bottom: 30px;
         }
 
-        /* ===== TABLE ===== */
+        /* ================= TABLE ================= */
 
         .kill-table {
             overflow: hidden;
 
             border-radius: 15px;
+
             border: 1px solid #ff4500;
         }
 
@@ -210,6 +221,7 @@
                 );
 
             font-weight: bold;
+
             font-size: 18px;
         }
 
@@ -225,6 +237,7 @@
 
         .player:hover {
             background: rgba(255, 69, 0, 0.15);
+
             transform: scale(1.02);
         }
 
@@ -237,16 +250,17 @@
                 );
         }
 
-        /* ===== RANK ===== */
+        /* ================= RANK ================= */
 
         .rank {
             font-size: 30px;
         }
 
-        /* ===== PLAYER NAME ===== */
+        /* ================= PLAYER NAME ================= */
 
         .player-name {
             font-size: 23px;
+
             font-weight: bold;
 
             text-align: left;
@@ -269,7 +283,7 @@
                 0 0 20px #ff4500;
         }
 
-        /* ===== KILLS ===== */
+        /* ================= KILLS ================= */
 
         .kills {
             font-size: 22px;
@@ -282,7 +296,19 @@
                 0 0 8px #ff6500;
         }
 
-        /* ===== FOOTER ===== */
+        /* ================= EMPTY ================= */
+
+        .empty-message {
+            padding: 35px 20px;
+
+            font-size: 22px;
+
+            color: #ccc;
+
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* ================= FOOTER ================= */
 
         .footer {
             padding: 40px 20px 60px;
@@ -296,7 +322,7 @@
             color: #ff4500;
         }
 
-        /* ===== MOBILE ===== */
+        /* ================= MOBILE ================= */
 
         @media (max-width: 600px) {
 
@@ -322,11 +348,13 @@
 
             .event-button {
                 padding: 13px 30px;
+
                 font-size: 19px;
             }
 
             .top-kill {
                 margin: 60px 15px;
+
                 padding: 30px 10px;
             }
 
@@ -346,6 +374,7 @@
 
             .player-name {
                 font-size: 17px;
+
                 padding-left: 5px;
             }
 
@@ -360,14 +389,19 @@
             .rank {
                 font-size: 24px;
             }
+
+            .empty-message {
+                font-size: 18px;
+            }
         }
 
     </style>
 </head>
 
+
 <body>
 
-    <!-- ===== FIREGAME LOGO ===== -->
+    <!-- ================= FIREGAME LOGO ================= -->
 
     <div class="container">
 
@@ -377,20 +411,30 @@
             alt="FIREGAME SMP"
         >
 
-        <!-- ===== SERVER INFO ===== -->
+
+        <!-- ================= SERVER INFO ================= -->
 
         <div class="server-info">
 
             <div class="ip">
+
                 🔥 ایپی سرور:
+
                 <span>
                     firegame12.aternos.me:61795
                 </span>
+
             </div>
 
+
             <div class="version">
+
                 🎮 نسخه:
-                <b>1.21.4</b>
+
+                <b>
+                    1.21.4
+                </b>
+
             </div>
 
         </div>
@@ -398,7 +442,7 @@
     </div>
 
 
-    <!-- ===== EVENT BUTTON ===== -->
+    <!-- ================= EVENT BUTTON ================= -->
 
     <div class="event-button-container">
 
@@ -412,15 +456,18 @@
     </div>
 
 
-    <!-- ===== TOP KILL ===== -->
+    <!-- ================= TOP KILL ================= -->
 
     <section class="top-kill">
 
-        <h2>⚔️ TOP KILL</h2>
+        <h2>
+            ⚔️ TOP KILL
+        </h2>
 
         <p class="subtitle">
             برترین بازیکنان FIREGAME SMP
         </p>
+
 
         <div class="kill-table">
 
@@ -428,18 +475,27 @@
 
             <div class="kill-header">
 
-                <span>رتبه</span>
+                <span>
+                    رتبه
+                </span>
 
-                <span>بازیکن</span>
+                <span>
+                    بازیکن
+                </span>
 
-                <span>Kill</span>
+                <span>
+                    Kill
+                </span>
 
             </div>
 
 
             <!-- PLAYER 1 -->
 
-            <div class="player first">
+            <div
+                class="player first"
+                id="row1"
+            >
 
                 <span class="rank">
                     🥇
@@ -449,14 +505,12 @@
                     class="player-name"
                     id="player1"
                 >
-                    arslan1284
                 </div>
 
                 <span
                     class="kills"
                     id="kills1"
                 >
-                    100
                 </span>
 
             </div>
@@ -464,7 +518,10 @@
 
             <!-- PLAYER 2 -->
 
-            <div class="player">
+            <div
+                class="player"
+                id="row2"
+            >
 
                 <span class="rank">
                     🥈
@@ -474,14 +531,12 @@
                     class="player-name"
                     id="player2"
                 >
-                    Coming Soon
                 </div>
 
                 <span
                     class="kills"
                     id="kills2"
                 >
-                    0
                 </span>
 
             </div>
@@ -489,7 +544,10 @@
 
             <!-- PLAYER 3 -->
 
-            <div class="player">
+            <div
+                class="player"
+                id="row3"
+            >
 
                 <span class="rank">
                     🥉
@@ -499,16 +557,25 @@
                     class="player-name"
                     id="player3"
                 >
-                    Coming Soon
                 </div>
 
                 <span
                     class="kills"
                     id="kills3"
                 >
-                    0
                 </span>
 
+            </div>
+
+
+            <!-- EMPTY MESSAGE -->
+
+            <div
+                class="empty-message"
+                id="emptyMessage"
+                style="display: none;"
+            >
+                چیزی پیدا نشد 😗
             </div>
 
         </div>
@@ -516,20 +583,23 @@
     </section>
 
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ================= FOOTER ================= -->
 
     <div class="footer">
 
-        <b>FIREGAME SMP</b>
+        <b>
+            FIREGAME SMP
+        </b>
 
-        <br><br>
+        <br>
+        <br>
 
         Minecraft Survival Server
 
     </div>
 
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- ================= SCRIPTS ================= -->
 
     <script>
 
@@ -540,10 +610,12 @@
         const topKill =
             document.querySelector(".top-kill");
 
+
         function showTopKill() {
 
             const position =
                 topKill.getBoundingClientRect().top;
+
 
             if (
                 position <
@@ -556,10 +628,12 @@
 
         }
 
+
         window.addEventListener(
             "scroll",
             showTopKill
         );
+
 
         showTopKill();
 
@@ -577,6 +651,7 @@
                         "https://apibahale12.onrender.com"
                     );
 
+
                 if (!response.ok) {
 
                     throw new Error(
@@ -586,58 +661,120 @@
 
                 }
 
+
                 const data =
                     await response.json();
 
+
                 console.log(
-                    "FIREGAME API:",
+                    "🔥 FIREGAME API:",
                     data
                 );
 
 
-                /* ==============================
-                   API KILLS
-                ============================== */
-
-                if (
-                    data.kills &&
+                const players =
                     Array.isArray(data.kills)
-                ) {
+                        ? data.kills.slice(0, 3)
+                        : [];
 
-                    const players =
-                        data.kills.slice(0, 3);
 
-                    players.forEach(
-                        (player, index) => {
+                const rows = [
+                    document.getElementById("row1"),
+                    document.getElementById("row2"),
+                    document.getElementById("row3")
+                ];
 
-                            const number =
-                                index + 1;
 
-                            const nameElement =
-                                document.getElementById(
-                                    "player" + number
-                                );
+                const emptyMessage =
+                    document.getElementById(
+                        "emptyMessage"
+                    );
 
-                            const killsElement =
-                                document.getElementById(
-                                    "kills" + number
-                                );
 
-                            if (
-                                nameElement &&
-                                killsElement
-                            ) {
+                /* =================================
+                   NO KILLS
+                ================================= */
 
-                                nameElement.textContent =
-                                    player.name;
+                if (players.length === 0) {
 
-                                killsElement.textContent =
-                                    player.kills;
+                    rows.forEach(row => {
 
-                            }
+                        row.style.display = "none";
+
+                    });
+
+
+                    emptyMessage.style.display =
+                        "block";
+
+
+                    return;
+                }
+
+
+                /* =================================
+                   KILLS EXIST
+                ================================= */
+
+                emptyMessage.style.display =
+                    "none";
+
+
+                rows.forEach(row => {
+
+                    row.style.display =
+                        "grid";
+
+                });
+
+
+                players.forEach(
+                    (player, index) => {
+
+                        const number =
+                            index + 1;
+
+
+                        const nameElement =
+                            document.getElementById(
+                                "player" + number
+                            );
+
+
+                        const killsElement =
+                            document.getElementById(
+                                "kills" + number
+                            );
+
+
+                        if (
+                            nameElement &&
+                            killsElement
+                        ) {
+
+                            nameElement.textContent =
+                                player.name;
+
+
+                            killsElement.textContent =
+                                player.kills;
 
                         }
-                    );
+
+                    }
+                );
+
+
+                /* پاک کردن ردیف‌های اضافی */
+
+                for (
+                    let i = players.length;
+                    i < 3;
+                    i++
+                ) {
+
+                    rows[i].style.display =
+                        "none";
 
                 }
 
@@ -646,7 +783,7 @@
             catch (error) {
 
                 console.error(
-                    "FIREGAME API ERROR:",
+                    "❌ FIREGAME API ERROR:",
                     error
                 );
 
@@ -656,7 +793,7 @@
 
 
         /* =========================================
-           LOAD API
+           FIRST LOAD
         ========================================= */
 
         loadKills();
@@ -674,4 +811,5 @@
     </script>
 
 </body>
+
 </html>
