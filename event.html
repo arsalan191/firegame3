@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ایونت‌های FIREGAME SMP</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Tahoma, Arial, sans-serif;
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #ff3c00 0%,
+                    #8b0000 35%,
+                    #180000 75%,
+                    #050000 100%
+                );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 180px;
+            max-width: 65%;
+
+            margin-bottom: 25px;
+
+            filter:
+                drop-shadow(0 0 10px #ff4500)
+                drop-shadow(0 0 25px #ff2200);
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 30px;
+
+            text-shadow:
+                0 0 10px #ff4500,
+                0 0 25px #ff0000;
+        }
+
+        .empty-box {
+            background: rgba(20, 0, 0, 0.75);
+
+            border: 2px solid #ff4500;
+            border-radius: 20px;
+
+            padding: 45px 25px;
+
+            box-shadow:
+                0 0 20px rgba(255, 69, 0, 0.5),
+                inset 0 0 20px rgba(255, 30, 0, 0.1);
+        }
+
+        .empty-text {
+            font-size: 25px;
+            color: #ddd;
+
+            text-shadow:
+                0 0 8px rgba(255, 69, 0, 0.6);
+        }
+
+        .back-button {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 13px 35px;
+
+            color: white;
+            text-decoration: none;
+
+            background: linear-gradient(
+                135deg,
+                #ff4500,
+                #b30000
+            );
+
+            border: 2px solid #ff6a00;
+            border-radius: 12px;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            box-shadow:
+                0 0 15px rgba(255, 69, 0, 0.6);
+
+            transition: 0.25s;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px) scale(1.03);
+
+            box-shadow:
+                0 0 25px rgba(255, 69, 0, 0.9);
+        }
+
+        footer {
+            margin-top: 35px;
+
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .empty-text {
+                font-size: 21px;
+            }
+
+            .empty-box {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <img
+            src="fire.png"
+            class="logo"
+            alt="FIREGAME SMP"
+        >
+
+        <h1>🎉 ایونت‌های FIREGAME</h1>
+
+        <div class="empty-box">
+            <div class="empty-text">
+                چیزی پیدا نشد 😗
+            </div>
+        </div>
+
+        <a href="index.html" class="back-button">
+            ← برگشت
+        </a>
+
+        <footer>
+            © 2026 FIREGAME SMP — All Rights Reserved
+        </footer>
+
+    </div>
+
+</body>
+</html>
