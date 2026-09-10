@@ -251,6 +251,14 @@
             color: #ff4500;
         }
 
+        /* ===== LOADING ===== */
+
+        .loading {
+            color: #ffb300;
+            font-size: 18px;
+            padding: 25px;
+        }
+
         /* ===== MOBILE ===== */
 
         @media (max-width: 600px) {
@@ -368,7 +376,7 @@
             </div>
 
 
-            <!-- FIRST PLAYER -->
+            <!-- PLAYER 1 -->
 
             <div class="player first">
 
@@ -376,18 +384,24 @@
                     🥇
                 </span>
 
-                <div class="player-name">
+                <div
+                    class="player-name"
+                    id="player1"
+                >
                     arslan1284
                 </div>
 
-                <span class="kills">
+                <span
+                    class="kills"
+                    id="kills1"
+                >
                     100
                 </span>
 
             </div>
 
 
-            <!-- SECOND PLAYER -->
+            <!-- PLAYER 2 -->
 
             <div class="player">
 
@@ -395,18 +409,24 @@
                     🥈
                 </span>
 
-                <div class="player-name">
+                <div
+                    class="player-name"
+                    id="player2"
+                >
                     Coming Soon
                 </div>
 
-                <span class="kills">
+                <span
+                    class="kills"
+                    id="kills2"
+                >
                     0
                 </span>
 
             </div>
 
 
-            <!-- THIRD PLAYER -->
+            <!-- PLAYER 3 -->
 
             <div class="player">
 
@@ -414,11 +434,17 @@
                     🥉
                 </span>
 
-                <div class="player-name">
+                <div
+                    class="player-name"
+                    id="player3"
+                >
                     Coming Soon
                 </div>
 
-                <span class="kills">
+                <span
+                    class="kills"
+                    id="kills3"
+                >
                     0
                 </span>
 
@@ -442,9 +468,13 @@
     </div>
 
 
-    <!-- ===== SCROLL ANIMATION ===== -->
+    <!-- ===== SCRIPTS ===== -->
 
     <script>
+
+        /* =========================================
+           TOP KILL SCROLL ANIMATION
+        ========================================= */
 
         const topKill =
             document.querySelector(".top-kill");
@@ -471,6 +501,119 @@
         );
 
         showTopKill();
+
+
+        /* =========================================
+           LOAD KILLS FROM FIREGAME API
+        ========================================= */
+
+        async function loadKills() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "https://apibahale12.onrender.com"
+                    );
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "API Error: " +
+                        response.status
+                    );
+
+                }
+
+                const data =
+                    await response.json();
+
+                console.log(
+                    "FIREGAME API:",
+                    data
+                );
+
+
+                /* ==============================
+                   اگر API اطلاعات Kill داشته باشد
+                ============================== */
+
+                if (
+                    data.kills &&
+                    Array.isArray(data.kills) &&
+                    data.kills.length > 0
+                ) {
+
+                    const players =
+                        data.kills.slice(0, 3);
+
+
+                    players.forEach(
+                        (player, index) => {
+
+                            const number =
+                                index + 1;
+
+
+                            const nameElement =
+                                document.getElementById(
+                                    "player" + number
+                                );
+
+
+                            const killsElement =
+                                document.getElementById(
+                                    "kills" + number
+                                );
+
+
+                            if (
+                                nameElement &&
+                                killsElement
+                            ) {
+
+                                nameElement.textContent =
+                                    player.name;
+
+                                killsElement.textContent =
+                                    player.kills;
+
+                            }
+
+                        }
+                    );
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "FIREGAME API ERROR:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =========================================
+           LOAD API
+        ========================================= */
+
+        loadKills();
+
+
+        /* =========================================
+           REFRESH EVERY 30 SECONDS
+        ========================================= */
+
+        setInterval(
+            loadKills,
+            30000
+        );
 
     </script>
 
