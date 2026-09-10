@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FIREGAME SMP</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #ff6500 0%,
+                    #a80000 30%,
+                    #320000 55%,
+                    #080808 85%
+                );
+        }
+
+        /* ===== HEADER ===== */
+
+        .container {
+            padding: 70px 20px 100px;
+        }
+
+        .logo {
+            width: 850px;
+            max-width: 95%;
+            height: auto;
+
+            filter:
+                drop-shadow(0 0 15px #ff4500)
+                drop-shadow(0 0 35px #ff0000);
+
+            transition: 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.03);
+        }
+
+        /* ===== SERVER INFO ===== */
+
+        .server-info {
+            margin: 45px auto 0;
+            padding: 30px;
+            max-width: 850px;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            border: 2px solid #ff4500;
+            border-radius: 20px;
+
+            box-shadow:
+                0 0 20px #ff4500,
+                inset 0 0 25px rgba(255, 69, 0, 0.15);
+        }
+
+        .ip {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffb300;
+            margin-bottom: 20px;
+        }
+
+        .ip span {
+            color: white;
+        }
+
+        .version {
+            font-size: 23px;
+            color: #ff7043;
+        }
+
+        /* ===== TOP KILL ===== */
+
+        .top-kill {
+            margin: 100px auto;
+            padding: 40px 20px;
+
+            max-width: 900px;
+
+            opacity: 0;
+            transform: translateY(80px);
+
+            transition: 1s ease;
+
+            background: rgba(10, 5, 5, 0.85);
+
+            border: 2px solid #ff4500;
+            border-radius: 25px;
+
+            box-shadow:
+                0 0 30px rgba(255, 69, 0, 0.5),
+                inset 0 0 30px rgba(255, 69, 0, 0.1);
+        }
+
+        .top-kill.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .top-kill h2 {
+            margin: 0;
+
+            font-size: 42px;
+            color: #ff6a00;
+
+            text-shadow:
+                0 0 10px #ff4500,
+                0 0 25px #ff0000;
+        }
+
+        .subtitle {
+            color: #ccc;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* ===== TABLE ===== */
+
+        .kill-table {
+            overflow: hidden;
+
+            border-radius: 15px;
+            border: 1px solid #ff4500;
+        }
+
+        .kill-header,
+        .player {
+            display: grid;
+
+            grid-template-columns:
+                120px
+                1fr
+                120px;
+
+            align-items: center;
+
+            padding: 18px 25px;
+        }
+
+        .kill-header {
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff2600,
+                    #ff6500,
+                    #ff2600
+                );
+
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .player {
+            background: rgba(255, 255, 255, 0.05);
+
+            border-top:
+                1px solid
+                rgba(255, 69, 0, 0.3);
+
+            transition: 0.3s;
+        }
+
+        .player:hover {
+            background: rgba(255, 69, 0, 0.15);
+            transform: scale(1.02);
+        }
+
+        .first {
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255, 140, 0, 0.20),
+                    rgba(255, 69, 0, 0.08)
+                );
+        }
+
+        /* ===== RANK ===== */
+
+        .rank {
+            font-size: 30px;
+        }
+
+        /* ===== PLAYER NAME ===== */
+
+        .player-name {
+            font-size: 23px;
+            font-weight: bold;
+
+            text-align: left;
+
+            padding-left: 20px;
+
+            color: white;
+
+            text-shadow:
+                0 0 8px rgba(255, 69, 0, 0.5);
+        }
+
+        .first .player-name {
+            color: #ffb300;
+
+            font-size: 25px;
+
+            text-shadow:
+                0 0 10px #ff6500,
+                0 0 20px #ff4500;
+        }
+
+        /* ===== KILLS ===== */
+
+        .kills {
+            font-size: 22px;
+
+            font-weight: bold;
+
+            color: #ffb300;
+
+            text-shadow:
+                0 0 8px #ff6500;
+        }
+
+        /* ===== FOOTER ===== */
+
+        .footer {
+            padding: 40px 20px 60px;
+
+            color: #888;
+
+            font-size: 15px;
+        }
+
+        .footer b {
+            color: #ff4500;
+        }
+
+        /* ===== MOBILE ===== */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding-top: 40px;
+            }
+
+            .server-info {
+                padding: 20px;
+            }
+
+            .ip {
+                font-size: 18px;
+            }
+
+            .version {
+                font-size: 18px;
+            }
+
+            .top-kill {
+                margin: 60px 15px;
+                padding: 30px 10px;
+            }
+
+            .top-kill h2 {
+                font-size: 32px;
+            }
+
+            .kill-header,
+            .player {
+                grid-template-columns:
+                    60px
+                    1fr
+                    70px;
+
+                padding: 14px 8px;
+            }
+
+            .player-name {
+                font-size: 17px;
+                padding-left: 5px;
+            }
+
+            .first .player-name {
+                font-size: 19px;
+            }
+
+            .kills {
+                font-size: 18px;
+            }
+
+            .rank {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== FIREGAME LOGO ===== -->
+
+    <div class="container">
+
+        <img
+            src="fire.png"
+            class="logo"
+            alt="FIREGAME SMP"
+        >
+
+        <!-- ===== SERVER INFO ===== -->
+
+        <div class="server-info">
+
+            <div class="ip">
+                🔥 ایپی سرور:
+                <span>
+                    firegame12.aternos.me:61795
+                </span>
+            </div>
+
+            <div class="version">
+                🎮 نسخه:
+                <b>1.21.4</b>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===== TOP KILL ===== -->
+
+    <section class="top-kill">
+
+        <h2>⚔️ TOP KILL</h2>
+
+        <p class="subtitle">
+            برترین بازیکنان FIREGAME SMP
+        </p>
+
+        <div class="kill-table">
+
+            <!-- HEADER -->
+
+            <div class="kill-header">
+
+                <span>رتبه</span>
+
+                <span>بازیکن</span>
+
+                <span>Kill</span>
+
+            </div>
+
+
+            <!-- FIRST PLAYER -->
+
+            <div class="player first">
+
+                <span class="rank">
+                    🥇
+                </span>
+
+                <div class="player-name">
+                    arslan1284
+                </div>
+
+                <span class="kills">
+                    100
+                </span>
+
+            </div>
+
+
+            <!-- SECOND PLAYER -->
+
+            <div class="player">
+
+                <span class="rank">
+                    🥈
+                </span>
+
+                <div class="player-name">
+                    Coming Soon
+                </div>
+
+                <span class="kills">
+                    0
+                </span>
+
+            </div>
+
+
+            <!-- THIRD PLAYER -->
+
+            <div class="player">
+
+                <span class="rank">
+                    🥉
+                </span>
+
+                <div class="player-name">
+                    Coming Soon
+                </div>
+
+                <span class="kills">
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
+
+    <div class="footer">
+
+        <b>FIREGAME SMP</b>
+
+        <br><br>
+
+        Minecraft Survival Server
+
+    </div>
+
+
+    <!-- ===== SCROLL ANIMATION ===== -->
+
+    <script>
+
+        const topKill =
+            document.querySelector(".top-kill");
+
+        function showTopKill() {
+
+            const position =
+                topKill.getBoundingClientRect().top;
+
+            if (
+                position <
+                window.innerHeight - 100
+            ) {
+
+                topKill.classList.add("show");
+
+            }
+
+        }
+
+        window.addEventListener(
+            "scroll",
+            showTopKill
+        );
+
+        showTopKill();
+
+    </script>
+
+</body>
+</html>
